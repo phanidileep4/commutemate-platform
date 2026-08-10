@@ -1,7 +1,8 @@
 {
   "name": "@commutemate/admin-web",
   "private": true,
-  "scripts": {"start":"ng serve","build":"ng build","test":"ng test"},
+  "engines": {"node":"^22.22.3 || ^24.15.0 || >=26.0.0"},
+  "scripts": {"start":"ng serve","build":"ng build","typecheck":"tsc -p tsconfig.app.json --noEmit"},
   "dependencies": {"@angular/common":"^22.1.0","@angular/core":"^22.1.0","@angular/platform-browser":"^22.1.0","@angular/router":"^22.1.0","rxjs":"^7.8.0"},
-  "devDependencies": {"@angular/build":"^22.1.0","@angular/cli":"^22.1.0","typescript":"~5.9.0"}
+  "devDependencies": {"@angular/build":"^22.1.0","@angular/cli":"^22.1.0","typescript":"~6.0.0"}
 }

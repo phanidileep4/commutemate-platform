@@ -320,7 +320,7 @@ Do not introduce a new framework, message broker, database, or service boundary 
 
 - Java 21+
 - Maven
-- Node.js / npm
+- Node.js 22.22.3+, 24.15.0+, or 26+ / npm
 - Docker + Docker Compose
 
 ### Start local infrastructure
@@ -337,6 +337,21 @@ mvn spring-boot:run
 ```
 
 Flyway owns schema migrations. Development seed data is available under `db/seed-dev.sql`.
+
+### Verify the repository
+
+Run the same checks used by CI:
+
+```bash
+(cd backend && mvn --batch-mode verify)
+(cd admin-web && npm ci && npm run typecheck && npm run build)
+(cd member-web && npm ci && npm run typecheck && npm run build)
+(cd member-mobile && npm ci && npm run typecheck)
+```
+
+The backend currently has unit tests for the matching kernel. The web and mobile foundations have strict type/build checks but do not yet have component test suites; add those alongside the first interactive vertical slices.
+
+GitHub Actions runs these checks for pull requests and pushes to `main` via [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Development identity
 
