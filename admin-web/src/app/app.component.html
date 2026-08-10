@@ -1,0 +1,17 @@
+<div class="shell">
+  <aside>
+    <div class="brand">CommuteMate</div><div class="tenant">Northstar Corp</div>
+    <nav><b>Overview</b><span>Matching Policy</span><span>Locations</span><span>Parking</span><span>Programs</span><span>Analytics</span><span>Privacy & Safety</span><span>Audit Log</span></nav>
+  </aside>
+  <main>
+    <header><div><p>Mobility Admin · {{status()}}</p><h1>Commute intelligence</h1></div><button (click)="load()">Connect API</button></header>
+    <section class="metrics"><article *ngFor="let m of metrics"><small>{{m[0]}}</small><strong>{{m[1]}}</strong></article></section>
+    <section class="grid">
+      <article class="card"><h2>Matching Policy Studio</h2><p>Control what your organization optimizes for. Members still control their own commute intent and privacy.</p>
+        <div class="weight" *ngFor="let item of weights() | keyvalue"><span>{{item.key}}</span><meter min="0" max="40" [value]="item.value"></meter><b>{{item.value}}%</b></div>
+        <div class="note">Weights total 100%. Hard safety and eligibility constraints are evaluated before ranking.</div>
+      </article>
+      <article class="card"><h2>Today at a glance</h2><p *ngIf="locations().length"><b>{{locations().length}}</b> active locations loaded from this tenant.</p><div class="hero">74%</div><p>of active matches were accepted within the first three recommendations.</p><hr><h3>Parking pressure</h3><p>West Campus Garage is projected to avoid <b>87 spaces</b> during the morning peak.</p></article>
+    </section>
+  </main>
+</div>
