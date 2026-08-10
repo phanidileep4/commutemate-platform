@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: commutemate
+      POSTGRES_USER: commutemate
+      POSTGRES_PASSWORD: commutemate
+    ports: ["5432:5432"]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../db/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+  redis:
+    image: redis:8-alpine
+    ports: ["6379:6379"]
+volumes:
+  postgres_data:
