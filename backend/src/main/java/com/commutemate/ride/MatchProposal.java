@@ -1,0 +1,8 @@
+package com.commutemate.ride;
+import jakarta.persistence.*; import java.time.Instant; import java.util.UUID;
+@Entity @Table(name="match_proposals") public class MatchProposal {
+ @Id @GeneratedValue private UUID id; @Column(name="tenant_id",nullable=false) private UUID tenantId; @Column(name="ride_offer_id",nullable=false) private UUID rideOfferId; @Column(name="driver_user_id",nullable=false) private UUID driverUserId; @Column(name="rider_user_id",nullable=false) private UUID riderUserId; @Column(nullable=false) private String status="PENDING_DRIVER"; @Column(name="created_at",nullable=false) private Instant createdAt=Instant.now(); @Column(name="responded_at") private Instant respondedAt;
+ protected MatchProposal(){} public MatchProposal(UUID tenantId,UUID offerId,UUID driverId,UUID riderId){this.tenantId=tenantId;this.rideOfferId=offerId;this.driverUserId=driverId;this.riderUserId=riderId;}
+ public void accept(){if(!status.equals("PENDING_DRIVER"))throw new IllegalArgumentException("proposal is no longer pending");status="ACCEPTED";respondedAt=Instant.now();} public void decline(){if(!status.equals("PENDING_DRIVER"))throw new IllegalArgumentException("proposal is no longer pending");status="DECLINED";respondedAt=Instant.now();}
+ public UUID getId(){return id;} public UUID getTenantId(){return tenantId;} public UUID getRideOfferId(){return rideOfferId;} public UUID getDriverUserId(){return driverUserId;} public UUID getRiderUserId(){return riderUserId;} public String getStatus(){return status;} public Instant getCreatedAt(){return createdAt;} public Instant getRespondedAt(){return respondedAt;}
+}
