@@ -316,6 +316,8 @@ Do not introduce a new framework, message broker, database, or service boundary 
 
 ## Local development
 
+For a complete setup guide—including database initialization, Flyway baselining, seeded identities, API walkthroughs, every client surface, verification, troubleshooting, and reset procedures—see [`docs/local-development.md`](docs/local-development.md).
+
 ### Prerequisites
 
 - Java 21+
@@ -333,10 +335,12 @@ docker compose -f infra/docker-compose.yml up -d
 
 ```bash
 cd backend
+SPRING_FLYWAY_BASELINE_ON_MIGRATE=true \
+SPRING_FLYWAY_BASELINE_VERSION=2 \
 mvn spring-boot:run
 ```
 
-Flyway owns schema migrations. Development seed data is available under `db/seed-dev.sql`.
+The baseline settings are required for the current Compose database because `db/schema.sql` preloads the structures represented by migrations V1 and V2. Flyway owns subsequent schema migrations. Development seed data is available under `db/seed-dev.sql`.
 
 ### Verify the repository
 
