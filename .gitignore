@@ -1,0 +1,9 @@
+node_modules/
+target/
+dist/
+.angular/
+.expo/
+.env
+.DS_Store
+.idea/
+.vscode/
