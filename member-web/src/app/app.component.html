@@ -1,0 +1,5 @@
+<main><header><div class="logo">CommuteMate</div><div>Northstar Corp · West Campus · {{status}} <button (click)="connect()">Connect</button></div></header>
+<section class="welcome"><p>Monday commute</p><h1>How do you want to commute today?</h1><div class="intents"><button *ngFor="let i of intents" [class.active]="intent===i" (click)="intent=i">{{i}}</button></div></section>
+<section><div class="section-title"><h2>Best matches for you</h2><span>Intent: {{intent}}</span></div>
+<div class="matches"><article *ngFor="let m of matches"><div class="score">{{m.score}}%</div><div class="avatar">{{m.name[0]}}</div><h3>{{m.name}}</h3><p>{{m.time}} · Route {{m.route}}%</p><div class="why">{{m.why}}</div><button class="primary">View match</button></article></div></section>
+<section class="privacy"><b>Privacy by design</b><span>Your exact pickup point is shared only after mutual acceptance.</span></section></main>
