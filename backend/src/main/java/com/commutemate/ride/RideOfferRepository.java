@@ -1,0 +1,2 @@
+package com.commutemate.ride; import java.time.Instant; import java.util.List; import java.util.UUID; import org.springframework.data.jpa.repository.JpaRepository;
+public interface RideOfferRepository extends JpaRepository<RideOffer,UUID>{ List<RideOffer> findAllByTenantIdAndLocationIdAndStatusAndDepartureAtBetweenOrderByDepartureAt(UUID tenantId,UUID locationId,String status,Instant from,Instant to); }
