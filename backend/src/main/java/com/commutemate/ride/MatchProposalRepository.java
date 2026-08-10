@@ -1,0 +1,2 @@
+package com.commutemate.ride; import java.util.List; import java.util.Optional; import java.util.UUID; import org.springframework.data.jpa.repository.JpaRepository;
+public interface MatchProposalRepository extends JpaRepository<MatchProposal,UUID>{ Optional<MatchProposal> findByIdAndTenantId(UUID id,UUID tenantId); List<MatchProposal> findAllByTenantIdAndDriverUserIdAndStatusOrderByCreatedAtDesc(UUID tenantId,UUID driverId,String status); }
