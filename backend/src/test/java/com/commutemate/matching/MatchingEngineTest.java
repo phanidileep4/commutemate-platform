@@ -1,0 +1,3 @@
+package com.commutemate.matching;
+import static org.junit.jupiter.api.Assertions.*; import org.junit.jupiter.api.Test;
+class MatchingEngineTest { @Test void scoresAndExplainsCandidate(){ var p=new MatchingPolicy(.30,.20,.15,.10,.10,.10,.05); var c=new MatchCandidate("sam",97,95,90,82,96,80,99); var score=new MatchingEngine().score(c,p); assertEquals(92.35,score.total(),.001); assertTrue(score.explanation().contains("reliability")||score.explanation().contains("route")||score.explanation().contains("history")); } @Test void policyMustEqualOne(){assertThrows(IllegalArgumentException.class,()->new MatchingPolicy(.3,.2,.1,.1,.1,.1,.05));}}
